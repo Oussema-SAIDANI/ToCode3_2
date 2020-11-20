@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/ToCode3_2/WS-TD/WS-TD.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Reservation" targetNamespace="http://localhost/ToCode3_2/WS-TD/WS-TD.php">
+  <types>
+    <xsd:schema targetNamespace="http://localhost/ToCode3_2/WS-TD/WS-TD.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="ReservationPort">
+    <operation name="greetUser">
+      <input message="tns:greetUserIn"/>
+    </operation>
+  </portType>
+  <binding name="ReservationBinding" type="tns:ReservationPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="greetUser">
+      <soap:operation soapAction="http://localhost/ToCode3_2/WS-TD/WS-TD.php#greetUser"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ToCode3_2/WS-TD/WS-TD.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ToCode3_2/WS-TD/WS-TD.php"/>
+      </output>
+    </operation>
+  </binding>
+  <message name="greetUserIn">
+    <part name="name" type="xsd:anyType"/>
+  </message>
+  <service name="ReservationService">
+    <port name="ReservationPort" binding="tns:ReservationBinding">
+      <soap:address location="http://localhost/ToCode3_2/WS-TD/WS-TD.php"/>
+    </port>
+  </service>
+</definitions>
